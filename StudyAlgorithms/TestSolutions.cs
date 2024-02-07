@@ -21,7 +21,8 @@ namespace StudyAlgorithms
             // var result = HashMapQuestions.IsIsomorphic("egcd", "adfd");
             // var result = HashMapQuestions.FindRestaurant(["Shogun", "Tapioca Express", "Burger King", "KFC"], ["KFC", "Shogun", "Burger King"]);
             // Console.WriteLine("[{0}]", string.Join(", ", result));
-            var result = HashMapQuestions.FirstUniqChar("aadadaad");
+            // var result = HashMapQuestions.FirstUniqChar("aadadaad");
+            var result = HashMapQuestions.GroupAnagrams(["cab", "tin", "pew", "duh", "may", "ill", "buy", "bar", "max", "doc"]);
             Console.WriteLine(result);
         }
     }

@@ -70,7 +70,7 @@ namespace StudyAlgorithms
             Dictionary<int, int> indexes = new Dictionary<int, int>();
             for (int i = 0; i < nums.Length; i++)
             {
-                var numberToDiscover = target - nums[i];
+                int numberToDiscover = target - nums[i];
                 if (indexes.ContainsKey(numberToDiscover))
                 {
                     Array.Resize(ref sumArray, sumArray.Length + 1);
@@ -109,7 +109,7 @@ namespace StudyAlgorithms
             char[]? tArray = t.ToCharArray();
             char[] isomorphicResult = new char[sArray.Length];
 
-            var conversionTable = new Dictionary<char, char>();
+            Dictionary<char, char> conversionTable = new Dictionary<char, char>();
 
             for (int i = 0; i < sArray.Length; i++)
             {
@@ -219,6 +219,36 @@ namespace StudyAlgorithms
             { 
                 return -1;
             }
+        }
+
+        public IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            IList<IList<string>> resultStrings = new List<IList<string>>();
+            Dictionary<string, List<string>> resultStringSum = new Dictionary<string, List<string>>(); 
+            
+            for (int i = 0;i < strs.Length;i++)
+            {
+                char[] asciiChars = strs[i].ToCharArray();
+                Array.Sort(asciiChars);
+                int[] asciiCharsConverted = Array.ConvertAll(asciiChars, c => (int)c);
+                string reultStringKey = string.Join("", asciiCharsConverted);
+
+                if (resultStringSum.ContainsKey(reultStringKey))
+                {
+                    resultStringSum[reultStringKey].Add(strs[i]);
+                }
+                else
+                { 
+                    resultStringSum.Add(reultStringKey, new List<string>(){ strs[i] });
+                }
+            }
+
+            foreach (List<string> listOfStrings in resultStringSum.Values)
+            {
+                resultStrings.Add(listOfStrings);
+            }
+
+            return resultStrings;
         }
     }
 }
